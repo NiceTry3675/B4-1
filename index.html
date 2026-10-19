@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- TODO(개인정보): [이름]을 본인 이름으로 바꾸세요 -->
-  <meta name="description" content="[이름]의 포트폴리오 — 자기소개, 기술 스택, GitHub 프로젝트, 연락처">
-  <title>[이름] | 포트폴리오</title>
+  <meta name="description" content="임준현(Junhyun Lim)의 포트폴리오 — AI Systems &amp; Applied AI Engineer. 자기소개, 기술 스택, GitHub 프로젝트, 연락처">
+  <title>임준현 | 포트폴리오</title>
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 
   <!-- 웹 폰트 (Google Fonts) -->
@@ -39,8 +38,7 @@
   <!-- ========== Header / Navigation ========== -->
   <header class="site-header">
     <nav class="nav container" aria-label="주요 메뉴">
-      <!-- TODO(개인정보): 로고 텍스트 -->
-      <a class="nav__logo" href="#hero">[이름]<span class="nav__logo-accent">.dev</span></a>
+      <a class="nav__logo" href="#hero">junhyun<span class="nav__logo-accent">.dev</span></a>
 
       <ul class="nav__menu" id="nav-menu">
         <li><a class="nav__link" href="#about">About</a></li>
@@ -76,16 +74,14 @@
     <section class="hero" id="hero" aria-labelledby="hero-title">
       <div class="container hero__inner">
         <p class="hero__greeting">안녕하세요! 👋</p>
-        <!-- TODO(개인정보): 이름 -->
-        <h1 class="hero__title" id="hero-title">저는 <span class="hero__name">[이름]</span>입니다.</h1>
+        <h1 class="hero__title" id="hero-title">저는 <span class="hero__name">임준현</span>입니다.</h1>
         <p class="hero__role">
           <!-- 스크린 리더용 전체 문구 (typing.js가 data-words로 채운다) -->
           <span class="visually-hidden hero__role-sr"></span>
-          <!-- TODO(개인정보): 타이핑 효과로 보여줄 문구 (쉼표로 구분) -->
-          <span class="typing" data-words="프론트엔드 개발자, 문제를 끝까지 파고드는 개발자, [나를 표현하는 한 마디]">프론트엔드 개발자</span><span class="typing__cursor" aria-hidden="true"></span>
+          <!-- 타이핑 효과로 보여줄 문구 (쉼표로 구분, 모바일에서 한 줄에 들어가는 길이로) -->
+          <span class="typing" data-words="Applied AI Engineer, 에이전트 시스템 개발자, AI 평가를 설계하는 개발자">Applied AI Engineer</span><span class="typing__cursor" aria-hidden="true"></span>
         </p>
-        <!-- TODO(개인정보): 한 줄 소개 -->
-        <p class="hero__desc">[한 줄 소개를 입력하세요. 예: 사용자 경험을 먼저 생각하는 웹 개발자입니다.]</p>
+        <p class="hero__desc">에이전트 시스템과 적응형 AI를 만들고, 그 결과를 제대로 평가하는 방법을 고민하는 개발자입니다.</p>
         <div class="hero__cta">
           <a class="btn btn--primary" href="#projects">프로젝트 보기</a>
           <a class="btn btn--outline" href="#contact">연락하기</a>
@@ -99,17 +95,16 @@
         <h2 class="section__title reveal" id="about-title">About Me</h2>
         <div class="about__content">
           <figure class="about__photo reveal">
-            <!-- TODO(개인정보): images/ 폴더에 본인 사진을 넣고 src·alt를 바꾸세요 -->
-            <img class="about__img" src="images/profile.svg" alt="[이름]의 프로필 사진" width="320" height="320">
+            <!-- TODO(개인정보): images/ 폴더에 본인 사진을 넣고 src를 바꾸세요 (지금은 자리표시 이미지) -->
+            <img class="about__img" src="images/profile.svg" alt="임준현 프로필 이미지" width="320" height="320">
           </figure>
           <div class="about__text reveal">
-            <!-- TODO(개인정보): 자기소개 -->
-            <p class="about__lead">[자기소개 첫 문단 — 어떤 개발자인지, 무엇을 좋아하는지 2~3문장으로 적어주세요.]</p>
-            <p>[자기소개 두 번째 문단 — 최근에 공부하거나 만들고 있는 것, 앞으로의 목표를 적어주세요.]</p>
+            <p class="about__lead">AI 시스템과 응용 AI를 공부하고 만드는 개발자입니다. 특히 에이전트 시스템(Agentic Systems), 적응형 AI(Adaptive AI), 그리고 AI를 어떻게 평가할 것인가(Evaluation)에 관심이 많습니다.</p>
+            <p>새 프로젝트는 코드보다 스펙을 먼저 쓰는 스펙 주도 개발(SDD)로 시작합니다. 과설계와 과소설계 사이에서, 짧지만 핵심을 모두 담은 스펙을 쓰는 일이 점점 개발의 본체가 되어 간다고 느낍니다.</p>
             <ul class="about__facts">
-              <li class="about__fact"><span class="about__fact-label">관심 분야</span><span>[관심 분야]</span></li>
-              <li class="about__fact"><span class="about__fact-label">소속</span><span>[학교 / 회사 / 교육과정]</span></li>
-              <li class="about__fact"><span class="about__fact-label">위치</span><span>[지역]</span></li>
+              <li class="about__fact"><span class="about__fact-label">관심 분야</span><span>Agentic Systems · Adaptive AI · Evaluation</span></li>
+              <li class="about__fact"><span class="about__fact-label">활동</span><span>Software Engineering Lab (SE Lab)</span></li>
+              <li class="about__fact"><span class="about__fact-label">위치</span><span>서울</span></li>
             </ul>
           </div>
         </div>
@@ -121,10 +116,19 @@
       <div class="container">
         <h2 class="section__title reveal" id="skills-title">Skills</h2>
         <p class="section__subtitle reveal">주로 사용하는 기술 스택입니다.</p>
-        <!-- TODO(개인정보): 본인 기술 스택으로 수정하세요 (현재 값은 GitHub 저장소 언어를 참고한 예시) -->
+        <!-- TODO(개인정보): LinkedIn 헤드라인과 GitHub 저장소 언어를 바탕으로 채운 목록입니다. 실제 기술 스택에 맞게 다듬으세요 -->
         <div class="skills__grid">
           <article class="skill-card reveal">
-            <h3 class="skill-card__title">Frontend</h3>
+            <h3 class="skill-card__title">AI &amp; Data</h3>
+            <ul class="skill-card__list">
+              <li class="skill-tag">Python</li>
+              <li class="skill-tag">Jupyter Notebook</li>
+              <li class="skill-tag">AI Agents</li>
+              <li class="skill-tag">LLM Evaluation</li>
+            </ul>
+          </article>
+          <article class="skill-card reveal">
+            <h3 class="skill-card__title">Web</h3>
             <ul class="skill-card__list">
               <li class="skill-tag">HTML5</li>
               <li class="skill-tag">CSS3</li>
@@ -133,20 +137,13 @@
             </ul>
           </article>
           <article class="skill-card reveal">
-            <h3 class="skill-card__title">Language &amp; Data</h3>
-            <ul class="skill-card__list">
-              <li class="skill-tag">Python</li>
-              <li class="skill-tag">Jupyter Notebook</li>
-              <li class="skill-tag">Shell Script</li>
-            </ul>
-          </article>
-          <article class="skill-card reveal">
-            <h3 class="skill-card__title">Tools</h3>
+            <h3 class="skill-card__title">Tools &amp; Practice</h3>
             <ul class="skill-card__list">
               <li class="skill-tag">Git</li>
               <li class="skill-tag">GitHub</li>
-              <li class="skill-tag">VS Code</li>
-              <li class="skill-tag">Chrome DevTools</li>
+              <li class="skill-tag">Codex</li>
+              <li class="skill-tag">Shell Script</li>
+              <li class="skill-tag">스펙 주도 개발 (SDD)</li>
             </ul>
           </article>
         </div>
@@ -226,8 +223,7 @@
   <!-- ========== Footer ========== -->
   <footer class="site-footer">
     <div class="container site-footer__inner">
-      <!-- TODO(개인정보): 이름 -->
-      <p class="site-footer__copy">&copy; <span class="site-footer__year">2026</span> [이름]. All rights reserved.</p>
+      <p class="site-footer__copy">&copy; <span class="site-footer__year">2026</span> 임준현. All rights reserved.</p>
       <ul class="social-links" aria-label="소셜 링크">
         <li>
           <a class="social-links__link" href="https://github.com/NiceTry3675" target="_blank" rel="noopener noreferrer" aria-label="GitHub (새 창)">
@@ -237,8 +233,7 @@
           </a>
         </li>
         <li>
-          <!-- TODO(개인정보): LinkedIn 주소 -->
-          <a class="social-links__link" href="https://www.linkedin.com/in/your-id" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (새 창)">
+          <a class="social-links__link" href="https://www.linkedin.com/in/nicetry36/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (새 창)">
             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
               <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
               <path d="M2 9h4v12H2z"/>

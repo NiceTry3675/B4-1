@@ -303,7 +303,7 @@ const fetchRepos = async () => {
 | Contact: 문의 폼 | ✅ | `#contact` — 이름/이메일/메시지 폼 |
 | Footer: 저작권, 소셜 링크 | ✅ | `©` + 연도(JS로 현재 연도) + GitHub/LinkedIn/이메일 |
 | 네비게이션에 섹션 앵커 링크 | ✅ | `href="#about"`, `#skills`, `#projects`, `#contact` |
-| 모든 이미지에 의미 있는 `alt` | ✅ | 프로필: `alt="[이름]의 프로필 사진"`. 장식용 SVG 아이콘은 `aria-hidden="true"`로 숨기고, 아이콘만 있는 링크·버튼에는 `aria-label`("GitHub (새 창)", "맨 위로 이동" 등) |
+| 모든 이미지에 의미 있는 `alt` | ✅ | 프로필: `alt="임준현 프로필 이미지"`. 장식용 SVG 아이콘은 `aria-hidden="true"`로 숨기고, 아이콘만 있는 링크·버튼에는 `aria-label`("GitHub (새 창)", "맨 위로 이동" 등) |
 | 폼 `<label for>` ↔ `id` 연결 | ✅ | `for="name"`↔`id="name"`, `email`, `message`. 에러 문구는 `aria-describedby`로 입력칸과 연결 |
 
 ### 4.3 CSS 스타일링
@@ -480,4 +480,4 @@ JS가 동작하지 않으면 `.js` 클래스가 붙지 않으므로 콘텐츠가
 - GitHub API는 인증 없이 **IP당 시간당 60회**입니다. 결과를 캐시하지 않으므로 새로고침할 때마다 1회씩 사용합니다.
 - 한 번에 최대 100개 저장소까지만 가져옵니다 (`per_page=100`, 페이지네이션 없음).
 - `auto-fit`은 카드가 1~2개뿐일 때 카드를 늘려 빈 칸을 채웁니다. 빈 열을 남기고 싶다면 `auto-fill`을 쓰면 됩니다 (요구사항은 `auto-fit`).
-- 개인정보(이름, 소개, 사진, 연락처)는 아직 자리표시입니다 → README "개인정보 채우기".
+- 프로필 사진과 이메일은 아직 자리표시입니다 → README "개인정보 채우기".

@@ -1,4 +1,4 @@
-# [이름]의 포트폴리오
+# 임준현의 포트폴리오
 
 > 외부 라이브러리 없이 **순수 HTML / CSS / JavaScript**만으로 만든 반응형 포트폴리오 웹사이트입니다.
 > GitHub API로 공개 저장소를 불러와 Projects 섹션에 보여주고, 다크 모드·햄버거 메뉴·스크롤 애니메이션·폼 유효성 검사 같은 인터랙션을 직접 구현했습니다.
@@ -7,7 +7,6 @@
 - **저장소**: https://github.com/NiceTry3675/B4-1
 - **요구사항 충족 설명 문서**: [docs/requirements-guide.md](docs/requirements-guide.md)
 
-<!-- TODO(개인정보): 제목의 [이름]을 바꾸세요. 개인정보를 채운 뒤 스크린샷을 다시 찍으면 좋습니다. -->
 
 ## 스크린샷
 
@@ -131,14 +130,16 @@ Chrome 개발자 도구(F12)로 Projects 섹션의 각 상태를 직접 재현�
 
 ## 개인정보 채우기
 
-개인정보는 아직 자리표시로 남아 있습니다. `TODO(개인정보)` 주석을 검색하면 고칠 곳을 모두 찾을 수 있습니다.
+이름·소개·관심 분야는 [LinkedIn 프로필](https://www.linkedin.com/in/nicetry36/)을 바탕으로 채웠습니다.
+아직 남은 항목은 `TODO(개인정보)` 주석으로 표시되어 있습니다.
 
 ```bash
-grep -rn "TODO(개인정보)" index.html README.md
+grep -rn "TODO(개인정보)" index.html
 ```
 
-- `index.html`: 페이지 제목·설명, 로고, Hero 이름·타이핑 문구·한 줄 소개, About 자기소개·사실 목록, Skills, 이메일, LinkedIn, 푸터 이름
-- `images/`: 프로필 사진을 넣고 `index.html`의 `<img src>`와 `alt` 수정
+- **프로필 사진**: `images/`에 사진을 넣고 `index.html`의 `<img src>`를 바꾸세요 (지금은 자리표시 이미지)
+- **이메일**: Contact 섹션과 푸터의 `your-email@example.com` 두 곳
+- **Skills**: LinkedIn 헤드라인과 GitHub 저장소 언어를 바탕으로 채운 목록이라, 실제 기술 스택에 맞게 다듬으세요
 - (선택) `js/config.js`: `formspreeId`에 Formspree 폼 ID를 넣으면 문의 폼이 실제 이메일로 전송됩니다
 
 ## 배포 (GitHub Pages)
