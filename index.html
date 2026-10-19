@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- TODO(개인정보): [이름]을 본인 이름으로 바꾸세요 -->
+  <meta name="description" content="[이름]의 포트폴리오 — 자기소개, 기술 스택, GitHub 프로젝트, 연락처">
+  <title>[이름] | 포트폴리오</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+
+  <!-- 웹 폰트 (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+
+  <!-- 외부 스타일시트 -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!--
+    외부 JavaScript (defer)
+    - defer: HTML 파싱을 막지 않고 내려받은 뒤, 파싱이 끝나면 "작성한 순서대로" 실행된다.
+    - config/utils → 기능 모듈 → main.js(초기화 호출) 순서가 보장된다.
+  -->
+  <script src="js/config.js" defer></script>
+  <script src="js/utils.js" defer></script>
+  <script src="js/theme.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/scroll.js" defer></script>
+  <script src="js/reveal.js" defer></script>
+  <script src="js/typing.js" defer></script>
+  <script src="js/projects.js" defer></script>
+  <script src="js/form.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <!-- 키보드 사용자를 위한 본문 바로가기 -->
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+  <!-- ========== Header / Navigation ========== -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="주요 메뉴">
+      <!-- TODO(개인정보): 로고 텍스트 -->
+      <a class="nav__logo" href="#hero">[이름]<span class="nav__logo-accent">.dev</span></a>
+
+      <ul class="nav__menu" id="nav-menu">
+        <li><a class="nav__link" href="#about">About</a></li>
+        <li><a class="nav__link" href="#skills">Skills</a></li>
+        <li><a class="nav__link" href="#projects">Projects</a></li>
+        <li><a class="nav__link" href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav__actions">
+        <button class="theme-toggle" type="button" aria-label="다크 모드" aria-pressed="false">
+          <!-- 라이트 모드일 때 보이는 달 아이콘 -->
+          <svg class="icon theme-toggle__moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+          <!-- 다크 모드일 때 보이는 해 아이콘 -->
+          <svg class="icon theme-toggle__sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="5"/>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+        </button>
+
+        <button class="nav__hamburger" type="button" aria-label="메뉴" aria-expanded="false" aria-controls="nav-menu">
+          <span class="nav__hamburger-line"></span>
+          <span class="nav__hamburger-line"></span>
+          <span class="nav__hamburger-line"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ========== Hero ========== -->
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="container hero__inner">
+        <p class="hero__greeting">안녕하세요! 👋</p>
+        <!-- TODO(개인정보): 이름 -->
+        <h1 class="hero__title" id="hero-title">저는 <span class="hero__name">[이름]</span>입니다.</h1>
+        <p class="hero__role">
+          <!-- 스크린 리더용 전체 문구 (typing.js가 data-words로 채운다) -->
+          <span class="visually-hidden hero__role-sr"></span>
+          <!-- TODO(개인정보): 타이핑 효과로 보여줄 문구 (쉼표로 구분) -->
+          <span class="typing" data-words="프론트엔드 개발자, 문제를 끝까지 파고드는 개발자, [나를 표현하는 한 마디]">프론트엔드 개발자</span><span class="typing__cursor" aria-hidden="true"></span>
+        </p>
+        <!-- TODO(개인정보): 한 줄 소개 -->
+        <p class="hero__desc">[한 줄 소개를 입력하세요. 예: 사용자 경험을 먼저 생각하는 웹 개발자입니다.]</p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="#projects">프로젝트 보기</a>
+          <a class="btn btn--outline" href="#contact">연락하기</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== About ========== -->
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <h2 class="section__title reveal" id="about-title">About Me</h2>
+        <div class="about__content">
+          <figure class="about__photo reveal">
+            <!-- TODO(개인정보): images/ 폴더에 본인 사진을 넣고 src·alt를 바꾸세요 -->
+            <img class="about__img" src="images/profile.svg" alt="[이름]의 프로필 사진" width="320" height="320">
+          </figure>
+          <div class="about__text reveal">
+            <!-- TODO(개인정보): 자기소개 -->
+            <p class="about__lead">[자기소개 첫 문단 — 어떤 개발자인지, 무엇을 좋아하는지 2~3문장으로 적어주세요.]</p>
+            <p>[자기소개 두 번째 문단 — 최근에 공부하거나 만들고 있는 것, 앞으로의 목표를 적어주세요.]</p>
+            <ul class="about__facts">
+              <li class="about__fact"><span class="about__fact-label">관심 분야</span><span>[관심 분야]</span></li>
+              <li class="about__fact"><span class="about__fact-label">소속</span><span>[학교 / 회사 / 교육과정]</span></li>
+              <li class="about__fact"><span class="about__fact-label">위치</span><span>[지역]</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Skills ========== -->
+    <section class="section section--alt skills" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <h2 class="section__title reveal" id="skills-title">Skills</h2>
+        <p class="section__subtitle reveal">주로 사용하는 기술 스택입니다.</p>
+        <!-- TODO(개인정보): 본인 기술 스택으로 수정하세요 (현재 값은 GitHub 저장소 언어를 참고한 예시) -->
+        <div class="skills__grid">
+          <article class="skill-card reveal">
+            <h3 class="skill-card__title">Frontend</h3>
+            <ul class="skill-card__list">
+              <li class="skill-tag">HTML5</li>
+              <li class="skill-tag">CSS3</li>
+              <li class="skill-tag">JavaScript (ES6+)</li>
+              <li class="skill-tag">TypeScript</li>
+            </ul>
+          </article>
+          <article class="skill-card reveal">
+            <h3 class="skill-card__title">Language &amp; Data</h3>
+            <ul class="skill-card__list">
+              <li class="skill-tag">Python</li>
+              <li class="skill-tag">Jupyter Notebook</li>
+              <li class="skill-tag">Shell Script</li>
+            </ul>
+          </article>
+          <article class="skill-card reveal">
+            <h3 class="skill-card__title">Tools</h3>
+            <ul class="skill-card__list">
+              <li class="skill-tag">Git</li>
+              <li class="skill-tag">GitHub</li>
+              <li class="skill-tag">VS Code</li>
+              <li class="skill-tag">Chrome DevTools</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Projects (GitHub API) ========== -->
+    <section class="section projects" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <h2 class="section__title reveal" id="projects-title">Projects</h2>
+        <p class="section__subtitle reveal">GitHub API로 불러온 공개 저장소 목록입니다. (최근 업데이트순)</p>
+
+        <!-- 언어별 필터 버튼 (projects.js가 데이터에 맞춰 생성) -->
+        <div class="projects__filters" role="group" aria-label="언어별 필터"></div>
+
+        <!-- 로딩 / 에러 / 빈 상태 / 결과 요약 메시지 (스크린 리더에 변경 내용을 알림) -->
+        <div class="projects__status" aria-live="polite"></div>
+
+        <!-- 프로젝트 카드 목록 -->
+        <div class="projects__grid"></div>
+
+        <div class="projects__more">
+          <button class="btn btn--outline projects__more-btn" type="button" hidden>더 보기</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Contact ========== -->
+    <section class="section section--alt contact" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <h2 class="section__title reveal" id="contact-title">Contact</h2>
+        <div class="contact__content">
+          <div class="contact__intro reveal">
+            <p class="contact__lead">궁금한 점이나 협업 제안이 있다면 편하게 연락 주세요.</p>
+            <p>보내주신 메시지는 확인하는 대로 답변드리겠습니다.</p>
+            <!-- TODO(개인정보): 이메일 주소 -->
+            <a class="contact__email" href="mailto:your-email@example.com">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <path d="m22 6-10 7L2 6"/>
+              </svg>
+              your-email@example.com
+            </a>
+          </div>
+
+          <!--
+            novalidate: 브라우저 기본 검증 말풍선 대신 form.js의 직접 만든 검증 UI를 사용한다.
+            (required 속성은 의미 전달과 보조기기를 위해 남겨둔다)
+          -->
+          <form class="contact-form reveal" novalidate>
+            <div class="form-field">
+              <label class="form-field__label" for="name">이름</label>
+              <input class="form-field__input" type="text" id="name" name="name" autocomplete="name" required aria-describedby="name-error">
+              <p class="form-field__error" id="name-error"></p>
+            </div>
+
+            <div class="form-field">
+              <label class="form-field__label" for="email">이메일</label>
+              <input class="form-field__input" type="email" id="email" name="email" autocomplete="email" placeholder="name@example.com" required aria-describedby="email-error">
+              <p class="form-field__error" id="email-error"></p>
+            </div>
+
+            <div class="form-field">
+              <label class="form-field__label" for="message">메시지</label>
+              <textarea class="form-field__input form-field__textarea" id="message" name="message" rows="5" required aria-describedby="message-error"></textarea>
+              <p class="form-field__error" id="message-error"></p>
+            </div>
+
+            <button class="btn btn--primary contact-form__submit" type="submit">보내기</button>
+            <p class="contact-form__status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== Footer ========== -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <!-- TODO(개인정보): 이름 -->
+      <p class="site-footer__copy">&copy; <span class="site-footer__year">2026</span> [이름]. All rights reserved.</p>
+      <ul class="social-links" aria-label="소셜 링크">
+        <li>
+          <a class="social-links__link" href="https://github.com/NiceTry3675" target="_blank" rel="noopener noreferrer" aria-label="GitHub (새 창)">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <!-- TODO(개인정보): LinkedIn 주소 -->
+          <a class="social-links__link" href="https://www.linkedin.com/in/your-id" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (새 창)">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <path d="M2 9h4v12H2z"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <!-- TODO(개인정보): 이메일 주소 -->
+          <a class="social-links__link" href="mailto:your-email@example.com" aria-label="이메일 보내기">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <path d="m22 6-10 7L2 6"/>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- 스크롤 탑 버튼 (scroll.js가 300px 이상 스크롤 시 표시) -->
+  <button class="scroll-top" type="button" aria-label="맨 위로 이동">
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+</body>
+</html>

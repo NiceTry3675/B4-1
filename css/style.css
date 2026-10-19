@@ -1,0 +1,1199 @@
+/* =========================================================
+   포트폴리오 스타일시트
+   - 모바일 퍼스트: 기본 스타일 = 모바일, 이후 min-width 미디어 쿼리로 확장
+   - 브레이크포인트: 768px(태블릿), 1024px(데스크톱)
+   ========================================================= */
+
+/* ---------- 1. 디자인 토큰 (CSS 변수) ---------- */
+:root {
+  /* 색상 — 라이트 테마 */
+  --color-bg: #ffffff;
+  --color-bg-alt: #f5f7fb;
+  --color-surface: #ffffff;
+  --color-text: #1f2937;
+  --color-text-muted: #4b5563;
+  --color-heading: #111827;
+  --color-primary: #4f46e5;
+  --color-primary-hover: #4338ca;
+  --color-primary-soft: #eef2ff;
+  --color-on-primary: #ffffff;
+  --color-border: #e5e7eb;
+  --color-danger: #dc2626;
+  --color-success: #16a34a;
+  /* 연한 배경 위 글자색 (명도 대비 4.5:1 이상 확보용) */
+  --color-danger-text: #b91c1c;
+  --color-success-text: #166534;
+  --color-tag-text: #4f46e5;
+  --color-header-bg: rgba(255, 255, 255, 0.9);
+  --color-hero-glow: rgba(79, 70, 229, 0.12);
+
+  /* 그림자 */
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
+  --shadow-md: 0 6px 16px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 14px 32px rgba(15, 23, 42, 0.14);
+
+  /* 폰트 */
+  --font-sans: 'Noto Sans KR', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.375rem;
+  --fs-2xl: 1.75rem;
+  --fs-hero: clamp(2rem, 7vw, 3.75rem);
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+  --fw-black: 900;
+  --lh-tight: 1.25;
+  --lh-base: 1.7;
+
+  /* 간격 */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+
+  /* 기타 */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 999px;
+  --header-height: 64px;
+  --container-width: 1120px;
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+
+  color-scheme: light;
+}
+
+/* 다크 테마 — theme.js가 <html data-theme="dark">를 설정하면 변수만 바뀌고,
+   변수를 사용하는 모든 요소의 색이 한 번에 바뀐다. */
+[data-theme="dark"] {
+  --color-bg: #0f172a;
+  --color-bg-alt: #111c33;
+  --color-surface: #1e293b;
+  --color-text: #e2e8f0;
+  --color-text-muted: #94a3b8;
+  --color-heading: #f8fafc;
+  --color-primary: #818cf8;
+  --color-primary-hover: #a5b4fc;
+  --color-primary-soft: rgba(129, 140, 248, 0.16);
+  --color-on-primary: #0f172a;
+  --color-border: #334155;
+  --color-danger: #f87171;
+  --color-success: #4ade80;
+  --color-danger-text: #fca5a5;
+  --color-success-text: #4ade80;
+  --color-tag-text: #a5b4fc;
+  --color-header-bg: rgba(15, 23, 42, 0.88);
+  --color-hero-glow: rgba(129, 140, 248, 0.18);
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 14px 32px rgba(0, 0, 0, 0.5);
+
+  color-scheme: dark;
+}
+
+/* ---------- 2. 리셋 & 기본 ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  /* 고정 헤더에 섹션 제목이 가려지지 않도록 스크롤 위치 보정 */
+  scroll-padding-top: var(--header-height);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  line-height: var(--lh-base);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  transition: background-color var(--transition-base), color var(--transition-base);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p,
+figure,
+ul {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--color-heading);
+  line-height: var(--lh-tight);
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* theme.js: 처음 테마를 적용하는 순간에는 색 전환 애니메이션을 끈다 */
+.no-transition *,
+.no-transition *::before,
+.no-transition *::after {
+  transition: none !important;
+}
+
+/* hidden 속성은 항상 숨김 (.btn의 display: inline-flex 등이 덮어쓰지 못하게) */
+[hidden] {
+  display: none !important;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* nav.js가 앵커 이동 후 포커스를 옮겨주는 섹션(tabindex="-1")에는 큰 테두리를 그리지 않는다 */
+[tabindex="-1"]:focus {
+  outline: none;
+}
+
+/* 아이콘(SVG) 공통 */
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---------- 3. 유틸리티 ---------- */
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+/* 화면에는 숨기고 스크린 리더에는 읽히게 */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: 1000;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  transform: translateY(-200%);
+  transition: transform var(--transition-fast);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* ---------- 4. 버튼 ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: var(--space-3) var(--space-6);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-full);
+  font-weight: var(--fw-bold);
+  line-height: 1.2;
+  transition: background-color var(--transition-fast), color var(--transition-fast),
+    border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.btn--primary {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.btn--primary:hover {
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn--outline {
+  background-color: transparent;
+  color: var(--color-primary);
+}
+
+.btn--outline:hover {
+  background-color: var(--color-primary-soft);
+  transform: translateY(-2px);
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ---------- 5. 헤더 & 네비게이션 (Flexbox) ---------- */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  height: var(--header-height);
+  background-color: transparent;
+  transition: background-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+/* scroll.js: 60px 이상 스크롤 시 .scrolled 추가 → 배경색 변경 */
+.site-header.scrolled,
+.site-header.menu-open {
+  background-color: var(--color-header-bg);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(10px);
+}
+
+/* 로고 왼쪽 / 메뉴·버튼 오른쪽 — Flexbox 한 줄 정렬 */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  height: 100%;
+}
+
+.nav__logo {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-black);
+  color: var(--color-heading);
+  white-space: nowrap;
+}
+
+.nav__logo-accent {
+  color: var(--color-primary);
+}
+
+/* 모바일: 메뉴는 헤더 아래 드롭다운 패널로 숨겨둔다 */
+.nav__menu {
+  position: absolute;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-2) var(--space-4) var(--space-4);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-md);
+  /* visibility: hidden → 숨겨진 동안 Tab 키 포커스도 받지 않는다 */
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-8px);
+  /* 닫힐 때: 사라지는 애니메이션(0.2s)이 끝난 뒤에 visibility를 hidden으로 */
+  transition: opacity var(--transition-fast), transform var(--transition-fast), visibility 0s linear 0.2s;
+}
+
+/* nav.js: 햄버거 클릭 시 classList.toggle('active') */
+.nav__menu.active {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  /* 열릴 때: visibility는 즉시 visible → 열자마자 메뉴 링크로 포커스를 옮길 수 있다 */
+  transition: opacity var(--transition-fast), transform var(--transition-fast), visibility 0s;
+}
+
+.nav__link {
+  display: block;
+  padding: var(--space-3) var(--space-2);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  font-weight: var(--fw-medium);
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.nav__link:hover,
+.nav__link.active {
+  color: var(--color-primary);
+}
+
+.nav__link.active {
+  font-weight: var(--fw-bold);
+}
+
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.theme-toggle,
+.nav__hamburger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface);
+  color: var(--color-heading);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.theme-toggle:hover,
+.nav__hamburger:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+/* 테마에 따라 아이콘 하나만 표시 */
+.theme-toggle__sun {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle__sun {
+  display: block;
+}
+
+[data-theme="dark"] .theme-toggle__moon {
+  display: none;
+}
+
+/* 햄버거 아이콘: 선 3개 → active 시 X 모양 */
+.nav__hamburger {
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nav__hamburger-line {
+  display: block;
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: currentColor;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.nav__hamburger.active .nav__hamburger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav__hamburger.active .nav__hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.nav__hamburger.active .nav__hamburger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---------- 6. 섹션 공통 ---------- */
+.section {
+  padding-block: var(--space-16);
+}
+
+.section--alt {
+  background-color: var(--color-bg-alt);
+}
+
+.section__title {
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-black);
+  margin-bottom: var(--space-3);
+}
+
+.section__title::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 4px;
+  margin-top: var(--space-3);
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+}
+
+.section__subtitle {
+  margin-bottom: var(--space-8);
+  color: var(--color-text-muted);
+}
+
+/* ---------- 7. Hero ---------- */
+.hero {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding-block: calc(var(--header-height) + var(--space-12)) var(--space-16);
+  background:
+    radial-gradient(circle at 15% 20%, var(--color-hero-glow), transparent 45%),
+    radial-gradient(circle at 85% 75%, var(--color-hero-glow), transparent 40%);
+}
+
+.hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  text-align: center;
+}
+
+.hero__greeting {
+  color: var(--color-primary);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+}
+
+.hero__title {
+  font-size: var(--fs-hero);
+  font-weight: var(--fw-black);
+  word-break: keep-all;
+}
+
+.hero__name {
+  color: var(--color-primary);
+}
+
+.hero__role {
+  min-height: 1.7em;
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-medium);
+  color: var(--color-heading);
+}
+
+.typing__cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  background-color: var(--color-primary);
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.hero__desc {
+  max-width: 36rem;
+  color: var(--color-text-muted);
+  word-break: keep-all;
+}
+
+.hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+/* ---------- 8. About ---------- */
+.about__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.about__photo {
+  width: min(240px, 70%);
+  flex-shrink: 0;
+}
+
+.about__img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.about__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.about__lead {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-medium);
+  color: var(--color-heading);
+}
+
+.about__facts {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.about__fact {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.about__fact-label {
+  min-width: 5rem;
+  font-weight: var(--fw-bold);
+  color: var(--color-primary);
+}
+
+/* ---------- 9. Skills (Grid) ---------- */
+.skills__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+.skill-card {
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.skill-card__title {
+  margin-bottom: var(--space-4);
+  font-size: var(--fs-lg);
+}
+
+.skill-card__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.skill-tag {
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary-soft);
+  color: var(--color-tag-text);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+}
+
+/* ---------- 10. Projects ---------- */
+.projects__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.projects__filters:empty {
+  display: none;
+}
+
+.filter-btn {
+  min-height: 36px;
+  padding: var(--space-1) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.filter-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.filter-btn.active {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.filter-btn__count {
+  margin-left: var(--space-1);
+  font-weight: var(--fw-regular);
+}
+
+/* 로딩 / 에러 / 빈 상태 공통 박스 */
+.state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-12) var(--space-4);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.state__title {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--color-heading);
+}
+
+.state--error .state__title {
+  color: var(--color-danger);
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.projects__summary {
+  margin-bottom: var(--space-4);
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+}
+
+/* 카드 목록: Grid + auto-fit + minmax → 화면 폭에 따라 열 개수가 자동으로 바뀐다 */
+.projects__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: var(--space-6);
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-lg);
+}
+
+.project-card__title {
+  font-size: var(--fs-lg);
+  word-break: break-all;
+}
+
+.project-card__link {
+  color: var(--color-heading);
+  transition: color var(--transition-fast);
+}
+
+.project-card__link:hover {
+  color: var(--color-primary);
+}
+
+.project-card__desc {
+  flex-grow: 1;
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+}
+
+.project-card__desc--empty {
+  font-style: italic;
+}
+
+.project-card__topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.project-card__topic {
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary-soft);
+  color: var(--color-tag-text);
+  font-size: var(--fs-xs);
+}
+
+.project-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+}
+
+.project-card__stat {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.project-card__stat .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.project-card__updated {
+  margin-left: auto;
+}
+
+.project-card__demo {
+  align-self: flex-start;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+}
+
+.project-card__demo:hover {
+  text-decoration: underline;
+}
+
+/* 언어 색상 점 — 인라인 style 대신 data-lang 속성 선택자로 색을 지정 */
+.lang-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background-color: var(--color-text-muted);
+}
+
+[data-lang="JavaScript"] .lang-dot { background-color: #f1e05a; }
+[data-lang="TypeScript"] .lang-dot { background-color: #3178c6; }
+[data-lang="Python"] .lang-dot { background-color: #3572a5; }
+[data-lang="HTML"] .lang-dot { background-color: #e34c26; }
+[data-lang="CSS"] .lang-dot { background-color: #563d7c; }
+[data-lang="Shell"] .lang-dot { background-color: #89e051; }
+[data-lang="Jupyter Notebook"] .lang-dot { background-color: #da5b0b; }
+[data-lang="Java"] .lang-dot { background-color: #b07219; }
+[data-lang="Kotlin"] .lang-dot { background-color: #a97bff; }
+[data-lang="C"] .lang-dot { background-color: #555555; }
+[data-lang="C++"] .lang-dot { background-color: #f34b7d; }
+[data-lang="Go"] .lang-dot { background-color: #00add8; }
+[data-lang="Rust"] .lang-dot { background-color: #dea584; }
+[data-lang="Swift"] .lang-dot { background-color: #f05138; }
+[data-lang="Vue"] .lang-dot { background-color: #41b883; }
+
+.projects__more {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-8);
+}
+
+/* ---------- 11. Contact & Form ---------- */
+.contact__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.contact__intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.contact__lead {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-medium);
+  color: var(--color-heading);
+}
+
+.contact__email {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  align-self: flex-start;
+  font-weight: var(--fw-bold);
+  word-break: break-all;
+}
+
+.contact__email:hover {
+  text-decoration: underline;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-md);
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.form-field__label {
+  font-weight: var(--fw-bold);
+  color: var(--color-heading);
+}
+
+.form-field__input {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-bg);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-field__input::placeholder {
+  color: var(--color-text-muted);
+  opacity: 1;
+}
+
+.form-field__textarea {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+/* form.js: 유효성 상태에 따라 .invalid / .valid 클래스 */
+.form-field__input.invalid {
+  border-color: var(--color-danger);
+}
+
+.form-field__input.valid {
+  border-color: var(--color-success);
+}
+
+/* 포커스 표시는 테두리색(빨강/초록 유효성 표시)과 겹치지 않도록 바깥 outline으로 한다 */
+.form-field__input:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.form-field__error {
+  min-height: 1.25rem;
+  color: var(--color-danger);
+  font-size: var(--fs-sm);
+}
+
+.contact-form__submit {
+  align-self: stretch;
+}
+
+.contact-form__status {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+}
+
+/* 비어 있을 때도 display: none으로 지우지 않는다.
+   (aria-live 영역이 화면에서 사라지면 나중에 넣은 메시지를 스크린 리더가 놓칠 수 있다)
+   대신 높이를 0으로 만들고, flex gap만큼 생기는 빈 공간을 음수 margin으로 상쇄한다 */
+.contact-form__status:empty {
+  padding: 0;
+  margin-top: calc(var(--space-5) * -1);
+}
+
+.contact-form__status.success {
+  background-color: color-mix(in srgb, var(--color-success) 14%, transparent);
+  color: var(--color-success-text);
+}
+
+.contact-form__status.error {
+  background-color: color-mix(in srgb, var(--color-danger) 14%, transparent);
+  color: var(--color-danger-text);
+}
+
+/* ---------- 12. Footer ---------- */
+.site-footer {
+  padding-block: var(--space-8);
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  text-align: center;
+}
+
+.site-footer__copy {
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+}
+
+.social-links {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.social-links__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  color: var(--color-text);
+  transition: color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.social-links__link:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+/* ---------- 13. 스크롤 탑 버튼 ---------- */
+.scroll-top {
+  position: fixed;
+  right: var(--space-4);
+  bottom: var(--space-4);
+  z-index: 90;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  box-shadow: var(--shadow-lg);
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--transition-base), transform var(--transition-base),
+    visibility var(--transition-base), background-color var(--transition-fast);
+}
+
+/* scroll.js: 300px 이상 스크롤 시 .visible 추가 */
+.scroll-top.visible {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-top:hover {
+  background-color: var(--color-primary-hover);
+}
+
+/* ---------- 14. 스크롤 애니메이션 ---------- */
+/* .js 클래스는 main.js가 추가한다 → JS가 꺼져 있으면 콘텐츠가 숨겨지지 않는다 */
+.js .reveal {
+  opacity: 0;
+}
+
+/* reveal.js(Intersection Observer)가 화면에 20% 이상 보이면 .visible 추가 → 아래에서 떠오르는 애니메이션
+   transition 대신 @keyframes를 쓰는 이유: 카드가 가진 hover용 transition·transform을 덮어쓰지 않기 위해서
+   (backwards: 애니메이션이 끝나면 원래 스타일로 돌아가므로 hover 시 떠오르는 효과가 그대로 동작한다) */
+.js .reveal.visible {
+  opacity: 1;
+  animation: reveal-up 0.6s ease backwards;
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+/* =========================================================
+   반응형: 태블릿 (768px 이상)
+   ========================================================= */
+@media (min-width: 768px) {
+  :root {
+    --header-height: 72px;
+    --fs-2xl: 2.25rem;
+  }
+
+  .container {
+    padding-inline: var(--space-8);
+  }
+
+  .section {
+    padding-block: var(--space-20);
+  }
+
+  /* 햄버거 숨기고 메뉴를 가로로 펼친다 */
+  .nav__hamburger {
+    display: none;
+  }
+
+  .nav__menu {
+    position: static;
+    flex-direction: row;
+    gap: var(--space-1);
+    margin-left: auto;
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .nav__link {
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .nav__link:hover {
+    background-color: var(--color-primary-soft);
+  }
+
+  .about__content {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-12);
+  }
+
+  .about__photo {
+    width: 260px;
+  }
+
+  .skills__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact-form {
+    padding: var(--space-8);
+  }
+
+  .contact-form__submit {
+    align-self: flex-end;
+  }
+
+  .site-footer__inner {
+    flex-direction: row;
+    justify-content: space-between;
+    /* 오른쪽 아래 고정된 스크롤 탑 버튼과 소셜 링크가 겹치지 않도록 여백 확보 */
+    padding-right: calc(var(--space-8) + 64px);
+    text-align: left;
+  }
+
+  .scroll-top {
+    right: var(--space-8);
+    bottom: var(--space-8);
+  }
+}
+
+/* =========================================================
+   반응형: 데스크톱 (1024px 이상)
+   ========================================================= */
+@media (min-width: 1024px) {
+  .nav__menu {
+    gap: var(--space-2);
+  }
+
+  .hero__inner {
+    gap: var(--space-5);
+  }
+
+  .about__photo {
+    width: 320px;
+  }
+
+  .skills__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .contact__content {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    align-items: start;
+    gap: var(--space-12);
+  }
+}
+
+/* =========================================================
+   접근성: 움직임 줄이기 설정을 켠 사용자
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    /* 0.01ms가 아닌 0s: 0보다 크면 visibility 전환이 생겨, 메뉴를 연 직후 링크에 포커스를 줄 수 없다 */
+    transition-duration: 0s !important;
+  }
+
+  .js .reveal {
+    opacity: 1;
+  }
+}
